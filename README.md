@@ -10,7 +10,13 @@ Steps to install project
 git clone https://github.com/jigimourya/eventplanning.git
 ```
 
-2. switch branch
+2. move to new dir eventplanning
+
+```
+cd eventplanning
+```
+
+3. switch branch
 
 ```
 git checkout develop2
