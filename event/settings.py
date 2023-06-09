@@ -136,3 +136,11 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'event.CustomUser'
+
+PROGRAMMING_LANGUAGES = [
+    ('Choose', '  -- Choose your school --  '),
+    ('SSET', 'Sharda School of Engineering and Technology'),
+    ('SSAHS', 'Sharda School of Allied Health Sciences'),
+    ('SSBSR', 'Sharda School of Basic Sciences and Research'),
+    ('SSMFE', 'Sharda School of Media, Film and Entertainment'),
+]
