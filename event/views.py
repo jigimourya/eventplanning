@@ -1,6 +1,7 @@
+from typing import Type
 from django.shortcuts import render, redirect
-
-from event.models import Organiser
+from .models import Organiser
+#from event.models import Organiser
 from .forms import CreateEvent, RegistrationForm
 from .forms import RegistrationForm2
 from django.contrib.auth import authenticate, login
@@ -13,6 +14,7 @@ def register(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('register2')
               # Redirect to login page
     else:
         form = RegistrationForm()
@@ -28,28 +30,30 @@ def registration_view(request):
             # Redirect or show success message
     else:
         form = RegistrationForm2()
-    return render(request, 'registration/register.html', {'form': form})
+    return render(request, 'registration/register2.html', {'form': form})
 
 def login_view(request):
+    errorMessage = ""
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        print("HELLO")
-    return render(request, 'login.html')
-    '''
-        user = authenticate(request, username=username, password=password)
+        print("in post")
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        print(username)
+        user = authenticate(username=username, password = password)
+        print("authenticated")
+        print(user)
         if user is not None:
-            print("Helo")
-            login(request, user)
-            return redirect('homepage')  # Redirect to a success page
+            print('user found')
+            if user.is_active:
+                print('user active')
+                login(request, user)
+                return redirect('loginhomepage')
         else:
-            # Authentication failed
-            print("Rishu")
-            return render(request, 'login.html', {'error': 'Invalid username or password'})
-    else:
-        print("uuuuu")
-        return render(request, 'login.html')
-    '''
+            errorMessage = 'Invalid username/password, try again'
+    print("loginpage")
+    return render(request, 'login.html', {'errorMessage': errorMessage})
+   
 def homepage2(request):
     # Your homepage logic
     return render(request, 'loginhomepage.html')
@@ -59,13 +63,19 @@ def create_event(request):
         form = CreateEvent(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('event-list')
+            return redirect('event_list')
               # Redirect to login page
     else:
         form = CreateEvent()
     return render(request, 'create_event.html', {'form': form})
 
+def event_list(request):
+    event = Organiser.objects.all()
+    return render(request, 'event_list.html', {'event': event})
 
 def homepage(request):
+
+    print(request.user.username)
+
     # Your homepage logic
     return render(request, 'homepage.html')

@@ -22,7 +22,7 @@ from django.contrib.auth.views import LoginView
 #from .forms import CustomLoginForm
 
 urlpatterns = [
-    path('', views.homepage, name='homepage'),
+    path('catalog/', views.homepage, name='home'),
     path('homepage/', views.homepage, name='homepage'),
     path('register/', views.register, name='register'),
     path('register2/', registration_view, name='register2'),
@@ -30,7 +30,7 @@ urlpatterns = [
     path('login/', login_view, name='login'),
     path('loginhomepage/', views.homepage2, name='loginhomepage'),
     path('create_event/', views.create_event, name='create_event'),
-
+    path('event_list/', views.event_list, name='event_list'),
 ]
 
 

@@ -138,9 +138,36 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'event.CustomUser'
 
 PROGRAMMING_LANGUAGES = [
-    ('Choose', '  -- Choose your school --  '),
     ('SSET', 'Sharda School of Engineering and Technology'),
     ('SSAHS', 'Sharda School of Allied Health Sciences'),
     ('SSBSR', 'Sharda School of Basic Sciences and Research'),
     ('SSMFE', 'Sharda School of Media, Film and Entertainment'),
+]
+
+EVENT_TYPE = [
+    ('Seminar', 'Seminar'),
+    ('Webinar', 'Webinar'),
+    ('Hackathon', 'Hackathon'),
+    ('Workshop', 'Workshop'),
+    ('Competition', 'Competition'),
+    ('Visit', 'Visit'),
+    ('Camp', 'Camp'),
+    ('Fest', 'Fest'),
+    ('Cultural festival', 'Cultural Festival'),
+    ('Party', 'Party'),
+    
+]
+
+BATCH = [
+    ('first year', 'First year (1st Year)'),
+    ('second year', 'Second year (2nd Year)'),
+    ('third year', 'Third year (3rd Year)'),
+    ('fourth year', 'Fourth year (4th Year)'),
+    ('fifth year', 'Fifth year (5th Year)'),
+]
+
+MODE = [
+    ('online', 'Online'),
+    ('offline', 'Offline'),
+    
 ]
