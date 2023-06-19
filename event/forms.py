@@ -12,7 +12,7 @@ class RegistrationForm(UserCreationForm):
 
     class Meta:
         model = CustomUser
-        fields = ['username', 'email', 'password1','password2', 'first_name', 'phone', 'systemid' ]
+        fields = ['username', 'email', 'password1','password2', 'first_name', 'phone', 'system_id' ]
 
 class RegistrationForm2(forms.Form):
     your_school = forms.ChoiceField(choices=settings.PROGRAMMING_LANGUAGES)

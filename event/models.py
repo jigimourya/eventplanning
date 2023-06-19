@@ -12,11 +12,11 @@ class UserProfile(models.Model):
 
 class CustomUser(AbstractUser):
     phone = models.CharField(max_length=20)
-    systemid = models.CharField(max_length=10)
+    system_id = models.CharField(max_length=10)
 
 class Organiser(models.Model):
     title = models.CharField(max_length=200)
-    description = models.TextField()
+    description = models.CharField(max_length=200)
     date = models.DateField()
     location = models.CharField(max_length=200)
 
