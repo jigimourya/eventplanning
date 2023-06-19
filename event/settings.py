@@ -171,3 +171,4 @@ MODE = [
     ('offline', 'Offline'),
     
 ]
+

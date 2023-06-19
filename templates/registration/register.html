@@ -1,8 +1,10 @@
+{% extends "basetemplate.html" %}
 
+{% block title %}Eventplanner Home{% endblock %}
 
 {% block content %}
 <h2>Registration</h2>
-<form action="{% url 'register2' %}" method="POST">
+<form action="{% url 'register' %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Register</button>

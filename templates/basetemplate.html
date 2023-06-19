@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>{% block title %}Event Planner{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+
+        body {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        /* CSS for header */
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+        }
+
+            .header .logo {
+                font-size: 25px;
+                font-family: 'Sriracha', cursive;
+                color: #ffff;
+                text-decoration: none;
+                margin-left: 10px;
+                margin-top: 10px;
+            }
+
+        .main {
+            align-items: center;
+        }
+
+        .nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #fff;
+            margin-right: 20px;
+            font-family: Tahoma, sans-serif;
+        }
+
+            .nav-items a {
+                text-decoration: none;
+                color: #000;
+                padding: 35px 20px;
+            }
+
+        /* CSS for main element */
+        .intro {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 320px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://images.unsplash.com/photo-1468359601543-843bfaef291a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1474&q=80");
+            background-size: auto;
+            background-position: center;
+            background-repeat: right;
+        }
+
+            .intro h1 {
+                font-family: 'Brush Script MT', cursive;
+                font-size: 60px;
+                color: #FFFAFA;
+                font-weight: bold;
+                text-transform: uppercase;
+                margin: 0;
+            }
+
+            .intro p {
+                font-size: 20px;
+                font-family: Candara, sans-serif;
+                color: #d1d1d1;
+                text-transform: uppercase;
+                margin: 20px 0;
+            }
+
+            .intro button {
+                background-color: #A9A9A9;
+                color: #000;
+                padding: 10px 25px;
+                border: none;
+                border-radius: 5px;
+                font-size: 20px;
+                font-weight: bold;
+                cursor: pointer;
+                box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4)
+            }
+
+        .main-content {
+            align-items: center;
+            justify-content: space-around;
+            display: grid;
+        }
+
+        .description p {
+            font-size: 20px;
+            font-family: Candara, sans-serif;
+            color: #000000;
+            text-transform: uppercase;
+            font-weight: bold;
+            padding-left: 40px;
+            padding-right: 40px;
+            text-align: center;
+        }
+
+        .achievements {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            /* padding: 40px 80px; */
+        }
+
+
+            .achievements .work1 {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 420px;
+                height: 400px;
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                margin: 40px;
+            }
+
+            .achievements .work2 {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 420px;
+                height: 400px;
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                margin: 40px;
+            }
+
+            .achievements .work3 {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 420px;
+                height: 400px;
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://images.unsplash.com/photo-1540317580384-e5d43616b9aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                margin: 40px;
+            }
+
+            .achievements .work1 i {
+                width: fit-content;
+                font-size: 50px;
+                color: #fff;
+                border-radius: 50%;
+                border: 2px solid #fff;
+                padding: 12px;
+            }
+
+            .achievements .work1 .work-heading {
+                font-size: 20px;
+                color: #fff;
+                font-family: Optima, sans-serif;
+                text-transform: uppercase;
+                margin: 10px 0;
+            }
+
+            .achievements .work1 .work-text {
+                font-size: 15px;
+                color: #fff;
+                margin: 10px 0;
+            }
+
+            .achievements .work2 i {
+                width: fit-content;
+                font-size: 50px;
+                color: #fff;
+                border-radius: 50%;
+                border: 2px solid #fff;
+                padding: 12px;
+            }
+
+            .achievements .work2 .work-heading {
+                font-size: 20px;
+                color: #fff;
+                font-family: Optima, sans-serif;
+                text-transform: uppercase;
+                margin: 10px 0;
+            }
+
+            .achievements .work2 .work-text {
+                font-size: 15px;
+                color: #fff;
+                margin: 10px 0;
+            }
+
+            .achievements .work3 i {
+                width: fit-content;
+                font-size: 50px;
+                color: #fff;
+                border-radius: 50%;
+                border: 2px solid #fff;
+                padding: 12px;
+            }
+
+            .achievements .work3 .work-heading {
+                font-size: 20px;
+                color: #fff;
+                font-family: Optima, sans-serif;
+                text-transform: uppercase;
+                margin: 10px 0;
+            }
+
+            .achievements .work3 .work-text {
+                font-size: 15px;
+                color: #fff;
+                margin: 10px 0;
+            }
+
+        .about-me {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 80px;
+            border-top: 2px solid #eeeeee;
+        }
+
+            .about-me img {
+                width: 500px;
+                max-width: 100%;
+                height: auto;
+                border-radius: 10px;
+            }
+
+        .about-me-text h2 {
+            font-size: 30px;
+            color: #333333;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .about-me-text p {
+            font-size: 15px;
+            color: #585858;
+            margin: 10px 0;
+        }
+
+        /* CSS for footer */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #302f49;
+            padding: 40px 80px;
+        }
+
+            .footer .copy {
+                color: #fff;
+            }
+
+        .bottom-links {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+            .bottom-links .links {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 0 40px;
+            }
+
+                .bottom-links .links span {
+                    font-size: 20px;
+                    color: #fff;
+                    text-transform: uppercase;
+                    margin: 10px 0;
+                }
+
+                .bottom-links .links a {
+                    text-decoration: none;
+                    color: #a1a1a1;
+                    padding: 10px 20px;
+                }
+
+        .button {
+            background-color: #555555;
+            border-radius: 12px;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .button {
+            transition-duration: 0.4s;
+        }
+
+        .button {
+            background-color: white;
+            color: black;
+            border: 2px solid #555555;
+        }
+
+            .button:hover {
+                background-color: #555555;
+                color: white;
+            }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        {% load static %}
+        <a href="#" class="logo"><img src="{% static 'images/shardians2.png' %}" alt="me" style="width:120px;height:100px;"></a>
+        
+        {% if isLoggedIn %}
+            <p>Welcome {{ loggedInUserName }}!</p>
+        <br/>
+        {% endif %}
+        <nav class="nav-items">
+            <a href="/">Home</a>
+            <a href="#">Events</a>
+            <a href="#">Seminars</a>
+            <a href="#">Hackathons</a>
+
+
+            {% if isLoggedIn %}
+
+            
+            <a href="http://127.0.0.1:8000/logout/">Logout</a>
+            {% else %}
+
+            <a href="http://127.0.0.1:8000/login/">
+                Login
+            </a>
+            <a href="http://127.0.0.1:8000/register/">
+                SignUp
+            </a>
+
+            {% endif %}
+
+        </nav>
+    </header>
+
+
+
+    
+
+        <div id="content">
+            <main class="main">
+                {% block content %}{% endblock %}
+            </main>
+        </div>
+        <footer class="footer">
+            <div class="copy">&copy; 2023 JN Technologies</div>
+            <div class="bottom-links">
+                <div class="links">
+                    <span>More Info</span>
+                    <a href="/">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="links">
+                    <span>Social Links</span>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </footer>
+    </body>
+
+</html>
