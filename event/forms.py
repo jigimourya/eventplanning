@@ -66,7 +66,7 @@ class CreateEvent(forms.ModelForm):
 
     class Meta:
         model = Organiser
-        fields = ['user_id', 'event_type', 'name_of_event', 'description', 'department', 'for_batch', 'date', 'venue', 'time', 'mode', 'organiser_name', 'organiser_phone', 'organiser_email', 'last_date_to_register' ]
+        fields = ['event_type', 'name_of_event', 'description', 'department', 'for_batch', 'date', 'venue', 'time', 'mode', 'user', 'organiser_name', 'organiser_phone', 'organiser_email', 'last_date_to_register' ]
 
 '''
 class EventList(ListView):

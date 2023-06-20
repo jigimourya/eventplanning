@@ -46,20 +46,19 @@ def registration_view(request):
     return render(request, 'registration/register2.html', {'form': form})
 
 def login_view(request):
+    if isUserLoggedIn(request):
+        return redirect('homepage')
+
     errorMessage = ""
     if request.method == 'POST':
-        print("in post")
+        
         username = request.POST.get('username')
         password = request.POST.get('password')
         
-        print(username)
         user = authenticate(username=username, password = password)
-        print("authenticated")
-        print(user)
+        
         if user is not None:
-            print('user found')
             if user.is_active:
-                print('user active')
                 login(request, user)
                 return redirect('homepage')
         else:
@@ -73,6 +72,16 @@ def homepage2(request):
     return render(request, 'loginhomepage.html')
 
 def create_event(request):
+    if not isUserLoggedIn(request):
+        return redirect('register')
+
+    isLoggedIn = isUserLoggedIn(request)
+
+    if isLoggedIn:
+        loggedInUserName = getLoggedInUserName(request)
+    else:
+        loggedInUserName = ''
+
     if request.method == 'POST':
         form = CreateEvent(request.POST)
         if form.is_valid():
@@ -81,11 +90,17 @@ def create_event(request):
               # Redirect to login page
     else:
         form = CreateEvent()
-    return render(request, 'create_event.html', {'form': form})
+    return render(request, 'create_event.html', {'form': form, 'isLoggedIn': isLoggedIn, 'loggedInUserName': loggedInUserName})
 
 def event_list(request):
-    event = Organiser.objects.all()
-    return render(request, 'event_list.html', {'event': event})
+    isLoggedIn = isUserLoggedIn(request)
+
+    if isLoggedIn:
+        loggedInUserName = getLoggedInUserName(request)
+    else:
+        loggedInUserName = ''
+    events = Organiser.objects.filter(user=request.user)
+    return render(request, 'event_list.html', {'events': events, 'isLoggedIn': isLoggedIn, 'loggedInUserName': loggedInUserName})
 
 def homepage(request):
     isLoggedIn = isUserLoggedIn(request)
@@ -95,7 +110,7 @@ def homepage(request):
     else:
         loggedInUserName = ''
 
-    print(isLoggedIn)
+    
 
     # Your homepage logic
     return render(request, 'homepage.html', {'isLoggedIn': isLoggedIn, 'loggedInUserName': loggedInUserName})

@@ -20,6 +20,8 @@ from .views import login_view
 from . import views
 from django.contrib.auth.views import LoginView
 from .views import logout_view
+from django.conf import settings
+from django.conf.urls.static import static
 #from .forms import CustomLoginForm
 
 urlpatterns = [
@@ -33,6 +35,6 @@ urlpatterns = [
     path('create_event/', views.create_event, name='create_event'),
     path('event_list/', views.event_list, name='event_list'),
     path('logout/', logout_view, name='logout'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
