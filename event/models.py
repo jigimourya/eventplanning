@@ -1,3 +1,4 @@
+from enum import auto
 from unittest.util import _MAX_LENGTH
 from django.contrib.auth.models import AbstractUser
 from django.db import models
@@ -39,7 +40,8 @@ class CustomUser(AbstractUser):
         return True
 '''
 class Organiser(models.Model):
-    
+    id = models.BigAutoField(primary_key=True, unique=True)
+    user_id = models.BigIntegerField(default = 0)
     event_type = models.CharField(max_length=50, choices=settings.EVENT_TYPE)
     name_of_event = models.CharField(max_length=200)
     description = models.TextField(max_length = 200)
@@ -49,7 +51,6 @@ class Organiser(models.Model):
     venue = models.CharField(max_length=200)
     time = models.TimeField()
     mode = models.CharField(max_length=50, choices=settings.MODE)
-    user = models.CharField(max_length=50)
     organiser_name = models.CharField(max_length=200)
     organiser_phone = models.CharField(max_length=200)
     organiser_email = models.CharField(max_length=200)

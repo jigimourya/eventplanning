@@ -1,0 +1,101 @@
+{% extends "basetemplate.html" %}
+
+{% block title %}Eventplanner - Events List{% endblock %}
+
+
+{% block content %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+    }
+
+    .main {
+        align-items: center;
+    }
+
+    .intro {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://wallpapercave.com/wp/wp10715825.jpg");
+        background-size: auto;
+        background-position: center;
+        color: #ffffff;
+    }
+
+    main.intro .box {
+        border: 5px solid;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        height: 400px;
+        background: url("https://img.freepik.com/free-photo/abstract-surface-textures-white-concrete-stone-wall_74190-8189.jpg?w=996&t=st=1686805874~exp=1686806474~hmac=0c9695b7746201064914b0fc4c95b3f56ea4187743ddc39af5242aeb92236709");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 40px;
+        color: #ffffff;
+    }
+</style>
+<div class="intro">
+
+    <div class="box">
+        <p class="work-heading"></p>
+        {% if eventDetails == None %}
+
+        NO EVENT
+        {% else %}
+        <h1>Event: {{ eventDetails.name_of_event }}</h1>
+
+
+        <table>
+
+
+            <tr>
+                <td>Name:</td>
+                <td>{{ eventDetails.name_of_event }}</td>
+            <tr>
+                <td>Description:</td>
+                <td>{{ eventDetails.description }}</td>
+            <tr>
+                <td>Date:</td>
+                <td>{{ eventDetails.date }}</td>
+            <tr>
+                <td>Venue:</td>
+                <td>{{ eventDetails.venue }}</td>
+            <tr>
+                <td>Time:</td>
+                <td>{{ eventDetails.time }}</td>
+            <tr>
+                <td>For Department:</td>
+                <td>{{ eventDetails.department }}</td>
+            <tr>
+                <td>Mode:</td>
+                <td>{{ eventDetails.mode }}</td>
+            <tr>
+                <td>Last Date to Register:</td>
+                <td>{{ eventDetails.last_date_to_register }}</td>
+            <tr>
+                <td>Organiser Details:</td>
+                <td>{{ eventDetails.organiser_name }},{{ eventDetails.organiser_phone }}, {{ eventDetails.organiser_email }}</td>
+
+            </tr>
+        </table>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

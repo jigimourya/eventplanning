@@ -23,19 +23,23 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #fff;
+            background-color: #27456e;
         }
 
             .header .logo {
                 font-size: 25px;
                 font-family: 'Sriracha', cursive;
-                color: #ffff;
+                color: #27456e;
                 text-decoration: none;
                 margin-left: 10px;
                 margin-top: 10px;
             }
-
-        .main {
+            .header p {
+                color: #fff;
+                font-family: Tahoma, sans-serif;
+                font-size: 20px;
+            }
+                .main {
             align-items: center;
         }
 
@@ -43,15 +47,37 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
-            background-color: #fff;
+            background-color: #27456e;
             margin-right: 20px;
             font-family: Tahoma, sans-serif;
         }
 
+            .nav-items ul li {
+                list-style: none;
+                display: inline-block;
+                margin: 0 20px;
+                position: relative;
+            }
+
             .nav-items a {
                 text-decoration: none;
-                color: #000;
+                color: #fff;
                 padding: 35px 20px;
+            }
+
+            .nav-items ul li::after {
+                content: '';
+                height: 3px;
+                width: 0%;
+                background: #009688;
+                position: absolute;
+                left: 0;
+                bottom: -10px;
+                transition: 0.5s;
+            }
+
+            .nav-items ul li:hover::after {
+                width: 100%;
             }
 
         /* CSS for main element */
@@ -266,7 +292,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #302f49;
+            background-color: #27456e;
             padding: 10px 20px;
         }
 
@@ -342,26 +368,29 @@
         <br/>
         {% endif %}
         <nav class="nav-items">
-            <a href="/">Home</a>
-            <a href="#">Events</a>
-            <a href="#">Seminars</a>
-            <a href="#">Hackathons</a>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/event_list/">Events</a></li>
+                <li><a href="#">Seminars</a></li>
+                <li><a href="#">Hackathons</a></li>
+                {% if isLoggedIn %}
+                <li><a href="/logout/">Logout</a></li>
+                {% else %}
+
+                <li>
+                    <a href="/login/">
+                        Login
+                    </a>
+                </li>
+                <li>
+                    <a href="/register/">
+                        SignUp
+                    </a>
+                </li>
 
 
-            {% if isLoggedIn %}
-
-            
-            <a href="http://127.0.0.1:8000/logout/">Logout</a>
-            {% else %}
-
-            <a href="http://127.0.0.1:8000/login/">
-                Login
-            </a>
-            <a href="http://127.0.0.1:8000/register/">
-                SignUp
-            </a>
-
-            {% endif %}
+                {% endif %}
+            </ul>
 
         </nav>
     </header>

@@ -124,6 +124,9 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')  #. os.path.join(BASE_DIR, 'staticfiles')
 # The URL to use when referring to static files (where they will be served from)
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'staticfiles'),
+)
 
 
 # Static file serving.
@@ -140,6 +143,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'event.CustomUser'
 
 PROGRAMMING_LANGUAGES = [
+    ('choose', '--Choose your school--'),
     ('SSET', 'Sharda School of Engineering and Technology'),
     ('SSAHS', 'Sharda School of Allied Health Sciences'),
     ('SSBSR', 'Sharda School of Basic Sciences and Research'),

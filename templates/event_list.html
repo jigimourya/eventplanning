@@ -9,17 +9,22 @@
 <table>
     <thead>
         <tr>
+            <th>Event Id</th>
             <th>Event Name</th>
             <th>Event Date</th>
             <th>Event Location</th>
         </tr>
+
     </thead>
     <tbody>
         {% for event in events %}
         <tr>
+            <td>{{ event.id }}</td>
             <td>{{ event.name_of_event }}</td>
             <td>{{ event.date }}</td>
             <td>{{ event.venue }}</td>
+            <td><a href="/event_details/?eventId={{ event.id }}">Details</a></td>
+            
         </tr>
         {% empty %}
         <tr>
@@ -27,6 +32,7 @@
         </tr>
         {% endfor %}
     </tbody>
+    
 </table>
 
 {% endblock %}

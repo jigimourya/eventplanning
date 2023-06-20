@@ -22,7 +22,7 @@ def register(request):
         if form.is_valid():
             print('valid')
             form.save()
-            return redirect('login')
+            return redirect('register2')
               # Redirect to login page
         else:
             print('not valid')
@@ -43,7 +43,7 @@ def registration_view(request):
             # Redirect or show success message
     else:
         form = RegistrationForm2()
-    return render(request, 'registration/register2.html', {'form': form})
+    return render(request, 'registration/register.html', {'form': form})
 
 def login_view(request):
     if isUserLoggedIn(request):
@@ -83,14 +83,29 @@ def create_event(request):
         loggedInUserName = ''
 
     if request.method == 'POST':
-        form = CreateEvent(request.POST)
+        #request.POST._mutable = True
+
+        updated_request = request.POST.copy()
+        print(updated_request)
+        user_id=getUserId(request)
+        updated_request.update({'user_id':user_id})
+        print(updated_request)
+        form = CreateEvent(updated_request)
+        
+        
         if form.is_valid():
+
             form.save()
             return redirect('event_list')
               # Redirect to login page
     else:
         form = CreateEvent()
     return render(request, 'create_event.html', {'form': form, 'isLoggedIn': isLoggedIn, 'loggedInUserName': loggedInUserName})
+
+def getUserId(request):
+    user = get_user(request)
+    user_id = user.id
+    return user_id
 
 def event_list(request):
     isLoggedIn = isUserLoggedIn(request)
@@ -99,8 +114,21 @@ def event_list(request):
         loggedInUserName = getLoggedInUserName(request)
     else:
         loggedInUserName = ''
-    events = Organiser.objects.filter(user=request.user)
+    events = Organiser.objects.filter(user_id=getUserId(request))
     return render(request, 'event_list.html', {'events': events, 'isLoggedIn': isLoggedIn, 'loggedInUserName': loggedInUserName})
+
+def event_details(request):
+    eventId = request.GET.get('eventId')
+    print('event', eventId)
+    
+    try:
+        eventDetail = Organiser.objects.get(pk=eventId)
+        print(eventDetail.event_type)
+    except:
+        eventDetail = None
+        print('EVENT NOT FOUND')
+    
+    return render(request, 'event_details.html', {'eventDetails':eventDetail})
 
 def homepage(request):
     isLoggedIn = isUserLoggedIn(request)
@@ -127,7 +155,7 @@ def isUserLoggedIn(request):
     if user.is_authenticated:
         print("Authenticated")
         username = user.username
-        print("Authenticated2")
+        print("Authenticated2 = ",user.id)
     else:
         # User is not logged in
         print("not Authenticated")

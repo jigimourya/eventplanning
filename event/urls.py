@@ -34,6 +34,7 @@ urlpatterns = [
     path('loginhomepage/', views.homepage2, name='loginhomepage'),
     path('create_event/', views.create_event, name='create_event'),
     path('event_list/', views.event_list, name='event_list'),
+    path('event_details/', views.event_details, name='event_details'),
     path('logout/', logout_view, name='logout'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
