@@ -17,12 +17,12 @@
 
     /* CSS for header */
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #fff;
-    }
+      .header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background-color: #27456e;
+      }
 
     .header .logo {
       font-size: 25px;
@@ -41,16 +41,34 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
-      background-color: #fff;
+      background-color: #27456e;
       margin-right: 20px;
 	font-family: Tahoma, sans-serif;
     }
-
-    .nav-items a {
+      .nav-items ul li {
+          list-style:none;
+          display:inline-block;
+          margin:0 20px;
+          position:relative;
+      }
+      .nav-items a {
       text-decoration: none;
-      color: #000;
+      color: #fff;
       padding: 35px 20px;
-    }
+      }
+      .nav-items ul li::after {
+          content: '';
+          height: 3px;
+          width: 0%;
+          background: #009688;
+          position: absolute;
+          left: 0;
+          bottom: -10px;
+          transition: 0.5s;
+      }
+      .nav-items ul li:hover::after {
+          width:100%;
+      }
 
     /* CSS for main element */
     .intro {
@@ -264,13 +282,13 @@ display:grid;
     }
 
     /* CSS for footer */
-    .footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #302f49;
-      padding: 40px 80px;
-    }
+      .footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background-color: #27456e;
+          padding: 40px 80px;
+      }
 
     .footer .copy {
       color: #fff;
@@ -337,16 +355,21 @@ display:grid;
         {% load static %}
         <a href="#" class="logo"><img src="{% static 'images/shardians2.png' %}" alt="me" style="width:120px;height:100px;"></a>
         <nav class="nav-items">
-            <a href="#">Home</a>
-            <a href="#">Events</a>
-            <a href="#">Seminars</a>
-            <a href="#">Hackathons</a>
-            <a href="http://127.0.0.1:8000/login/">
-                Login
-            </a>
-            <fa href="http://127.0.0.1:8000/register/">
-                SignUp
-                </a>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li> <a href="#">Events</a></li>
+                <li><a href="#">Seminars</a></li>
+                <li> <a href="#">Hackathons</a></li>
+                <li><a href="http://127.0.0.1:8000/login/">
+                    Login
+                    </a></li>
+                <li><a href="http://127.0.0.1:8000/register/">
+                        SignUp
+                    </a></li>
+            </ul>
+         
+            
+            
 
         </nav>
     </header>
@@ -361,13 +384,6 @@ display:grid;
             </form>
         </div>
         <div class="main-content">
-            <div class="description">
-                <p>
-                    Platform that provides easy access to events, fest, seminars, hackathons going on or upcoming.
-                    <br />Students can track event information, important dates and certificates.
-                    <br />Faculties can track event participants and their achievments.
-                </p>
-            </div>
             <div class="achievements">
                 <div class="work1">
                     <i class="fas fa-atom"></i>
