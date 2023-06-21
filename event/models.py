@@ -2,43 +2,23 @@ from enum import auto
 from unittest.util import _MAX_LENGTH
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-
 from event import settings
 
 
-#from djangofrom tkinter.tix import MAX.conf import settings
 
 
 class UserProfile(models.Model):
     # Other fields in your model
     your_school = models.CharField(max_length=50, choices=settings.PROGRAMMING_LANGUAGES)
+
+
 
 class CustomUser(AbstractUser):
     phone = models.CharField(max_length=20)
     systemid = models.CharField(max_length=10)
 
-'''
-class UserProfile(models.Model):
-    # Other fields in your model
-    your_school = models.CharField(max_length=50, choices=settings.PROGRAMMING_LANGUAGES)
 
-class CustomUser(AbstractUser):
-    
-    first_name = models.CharField(max_length=100)
-    phone = models.CharField(max_length=20)
-    systemid = models.IntegerField(default=0)
 
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email','password','systemid']
-    @property
-    def is_anonymous(self):
-        return False
-
-    # Override the default is_authenticated property
-    @property
-    def is_authenticated(self):
-        return True
-'''
 class Organiser(models.Model):
     id = models.BigAutoField(primary_key=True, unique=True)
     user_id = models.BigIntegerField(default = 0)

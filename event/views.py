@@ -1,8 +1,7 @@
 from typing import Type
 from wsgiref.util import request_uri
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Organiser
-#from event.models import Organiser
 from .forms import CreateEvent, RegistrationForm
 from .forms import RegistrationForm2
 from django.contrib.auth import authenticate, login
@@ -23,7 +22,7 @@ def register(request):
             print('valid')
             form.save()
             return redirect('register2')
-              # Redirect to login page
+              
         else:
             print('not valid')
     else:
@@ -39,8 +38,7 @@ def registration_view(request):
         if form.is_valid():
             form.save()
             return redirect('login')
-            # Process form data
-            # Redirect or show success message
+            
     else:
         form = RegistrationForm2()
     return render(request, 'registration/register.html', {'form': form})
@@ -66,10 +64,7 @@ def login_view(request):
     print("loginpage")
     return render(request, 'login.html', {'errorMessage': errorMessage})
    
-def homepage2(request):
-    user = get_user(request)
-    # Your homepage logic
-    return render(request, 'loginhomepage.html')
+
 
 def create_event(request):
     if not isUserLoggedIn(request):
@@ -83,7 +78,6 @@ def create_event(request):
         loggedInUserName = ''
 
     if request.method == 'POST':
-        #request.POST._mutable = True
 
         updated_request = request.POST.copy()
         print(updated_request)
@@ -97,7 +91,7 @@ def create_event(request):
 
             form.save()
             return redirect('event_list')
-              # Redirect to login page
+              # Redirect to event_list page
     else:
         form = CreateEvent()
     return render(request, 'create_event.html', {'form': form, 'isLoggedIn': isLoggedIn, 'loggedInUserName': loggedInUserName})
@@ -138,9 +132,6 @@ def homepage(request):
     else:
         loggedInUserName = ''
 
-    
-
-    # Your homepage logic
     return render(request, 'homepage.html', {'isLoggedIn': isLoggedIn, 'loggedInUserName': loggedInUserName})
 
 
@@ -161,6 +152,18 @@ def isUserLoggedIn(request):
         print("not Authenticated")
         username = None
     return username
+
+def event_delete(request):
+    eventId = request.GET.get('eventId')
+    print('event', eventId)
+    try:
+        eventDelete = Organiser.objects.get(pk=eventId)
+        print(eventDelete.event_type)
+        eventDelete.delete()
+    except:
+        eventDelete = None
+        print('EVENT NOT FOUND')
+    return redirect('event_list')
 
 def logout_view(request):
     logout(request)

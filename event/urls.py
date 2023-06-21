@@ -22,19 +22,17 @@ from django.contrib.auth.views import LoginView
 from .views import logout_view
 from django.conf import settings
 from django.conf.urls.static import static
-#from .forms import CustomLoginForm
 
 urlpatterns = [
     path('catalog/', views.homepage, name='home'),
     path('homepage/', views.homepage, name='homepage'),
     path('register/', views.register, name='register'),
     path('register2/', registration_view, name='register2'),
-    #path('login/', LoginView.as_view(authentication_form=CustomLoginForm, template_name='login.html'), name='login'),
     path('login/', login_view, name='login'),
-    path('loginhomepage/', views.homepage2, name='loginhomepage'),
     path('create_event/', views.create_event, name='create_event'),
     path('event_list/', views.event_list, name='event_list'),
     path('event_details/', views.event_details, name='event_details'),
+    path('event_delete/', views.event_delete, name='event_delete'),
     path('logout/', logout_view, name='logout'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
