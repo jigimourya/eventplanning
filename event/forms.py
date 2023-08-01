@@ -27,7 +27,10 @@ class RegistrationForm2(forms.ModelForm):
 
 
 class CreateEvent(forms.ModelForm):
-
+    event_date = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS)
     class Meta:
         model = Organiser
-        fields = ['id', 'user_id', 'event_type', 'name_of_event', 'description', 'department', 'for_batch', 'date', 'venue', 'time', 'mode', 'organiser_name', 'organiser_phone', 'organiser_email', 'last_date_to_register' ]
+        
+        fields = ['id', 'user_id', 'event_type', 'name_of_event', 'description', 'department', 'for_batch', 'event_date', 'venue', 'time', 'mode', 'organiser_name', 'organiser_phone', 'organiser_email', 'last_date_to_register', 'avatar' ]
+        
+

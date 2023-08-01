@@ -4,13 +4,132 @@
 
 {% block content %}
 
+<style>
+    .upcoming {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        box-sizing: border-box;
+        /* padding: 40px 80px; */
+    }
+
+
+        .upcoming .work1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 420px;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 40px;
+        }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        height: 320px;
+        background-size: auto;
+        background-position: center;
+        background-repeat: repeat;
+        padding-bottom: 10px;
+    }
+</style>
+
+
 <div class="intro">
     <h1>Shardian Events</h1>
-    <p>Events are here! Where are you?</p>
+    <p>Events are here! Where are you? </p>
     <form action="/create_event/">
         <input type="submit" class="button" value="Create Event">
     </form>
 </div>
+
+
+<!--
+{% for event in upcomingEventsList %}
+
+<div class="upcoming">
+    <p>Event Name: {{ event.name_of_event }}</p>
+    <img src="{{ event.avatar.url }}" class="img-responsive" style="width:120px" alt="Thumbnail" />
+    <p>Event Type: {{ event.event_type }}</p>
+    <p>Event Date: {{ event.event_date }}</p>
+</div>
+    {% endfor %}
+-->
+
+
+
+<head>
+    <!--Add pre compiled library files -->
+    <!--Automatics css and js adder-->
+    <!--auto compiled css & Js-->
+    <script type="text/javascript"
+            src="//code.jquery.com/jquery-1.9.1.js">
+    </script>
+    <link rel="stylesheet"
+          type="text/css"
+          href="/css/result-light.css">
+    <script type="text/javascript"
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+    </script>
+    <link rel="stylesheet"
+          type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet"
+          type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    {% load static %}
+    <link rel="stylesheet"
+          href="{% static 'css/styles.css'%}">
+</head>
+
+<body>
+    <!-- create a bootstrap card in a container-->
+    <div class="container">
+        <!--Bootstrap card with slider class-->
+        <div id="carousel-demo"
+             class="carousel slide"
+             data-ride="carousel">
+            <div class="carousel-inner">
+                {% for event in upcomingEventsList %}
+                <div class="item">
+                    <h1 class="event-name">Event Name: {{ event.name_of_event }}</h1>
+                    <img src="{{ event.avatar.url }}" class="img-responsive" style="width:120px" alt="Thumbnail" />
+                    <h3 class="event-type">Event Type: {{ event.event_type }}</h3>
+                    <p>Event Date: {{ event.event_date }}</p>
+                </div>
+                {% endfor %}
+                <div class="item active">
+                    <h2 class="product-name">Event Name: Party</h2>
+                    <img src="{{ event.avatar.url }}" class="img-responsive" style="width:120px" alt="Thumbnail" />
+                    <p>Event Type: {{ event.event_type }}</p>
+                    <p>Event Date: {{ event.event_date }}</p>
+                </div>
+            </div>
+            <!--slider control for card-->
+            <a class="left carousel-control"
+               href="#carousel-demo"
+               data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left">
+                </span>
+            </a>
+            <a class="right carousel-control"
+               href="#carousel-demo"
+               data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right">
+                </span>
+            </a>
+        </div>
+    </div>
+</body>
+
+
 <div class="main-content">
     <!-- <div class="description">
          <p>
@@ -20,6 +139,8 @@
          </p>
      </div>
      -->
+
+
     <div class="achievements">
         <div class="work1">
             <i class="fas fa-atom"></i>
@@ -38,5 +159,4 @@
         </div>
     </div>
 </div>
-
 {% endblock %}

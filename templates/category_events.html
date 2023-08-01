@@ -1,19 +1,25 @@
 {% extends "basetemplate.html" %}
 
-{% block title %}Eventplanner - Events List{% endblock %}
+{% block title %}Eventplanner - {{ eventCategory }}{% endblock %}
+
 
 {% block content %}
-<style>
-    .content{
-
-        padding-bottom: 400px;
-        text-align: left;
-    }
-
-</style>
 
 <div class="content">
-    <h1>Event List</h1>
+    <h1>{{ eventCategory }}</h1>
+
+    <form action="/events/" method="GET">
+        <label for="years">Choose year:</label>
+        <input type="hidden" name="category" value="{{ eventCategory }}" />
+        <select id="eventYear" name="eventYear">
+            {% for year in years %}
+            <option value="{{year}}">{{year}}</option>
+            {% endfor %}
+
+        </select>
+        <button type="submit">Submit</button>
+
+    </form>
 
     <table style="border: 1px solid black" width="100%">
         <thead>
@@ -23,7 +29,6 @@
                 <th style="color: #ffffff">Event Name</th>
                 <th style="color: #ffffff">Event Date</th>
                 <th style="color: #ffffff">Event Location</th>
-                <th></th>
                 <th></th>
                 <th></th>
             </tr>
@@ -51,5 +56,6 @@
 
     </table>
 </div>
+
 
 {% endblock %}

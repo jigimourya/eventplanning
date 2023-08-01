@@ -1,0 +1,45 @@
+{% extends "basetemplate.html" %}
+
+{% block title %}Eventplanner - Events List{% endblock %}
+
+
+{% block content %}
+
+<h1>Edit Event</h1>
+
+<form action="{% url 'event_edit' %}?eventId={{ eventEdit.id }}" method="POST">
+    {% csrf_token %}
+    <label for="event-name">Event Name:</label>
+    <input type="text" id="event-name" name="event_name" value="{{ eventEdit.name_of_event }}" required>
+
+    <label for="event-type">Event Type:</label>
+    <input type="text" id="event-type" name="event_type" value="{{ eventEdit.event_type }}" required>
+
+    <label for="description">Event Description:</label>
+    <input type="text" id="description" name="description" value="{{ eventEdit.description }}" required>
+
+    <label for="department">Event Department:</label>
+    <input type="text" id="department" name="department" value="{{ eventEdit.department }}" required>
+
+    <label for="for-batch">For Batch:</label>
+    <input type="text" id="for-batch" name="for_batch" value="{{ eventEdit.for_batch }}" required>
+
+    <label for="event-time">Event Time:</label>
+    <input type="time" id="event-time" name="time" value="{{ eventEdit.time }}" required>
+
+    <label for="event-mode">Event Mode:</label>
+    <input type="text" id="event-mode" name="mode" value="{{ eventEdit.mode }}" required>
+
+    <label for="organiser-email">Organiser Email:</label>
+    <input type="email" id="organiser-email" name="organiser_email" value="{{ eventEdit.organiser_email }}" required>
+
+    <label for="event-date">Event Date:</label>
+    <input type="date" id="event-date" name="event_date" value="{{ eventEdit.event_date }}" required>
+
+    <label for="event-location">Event Location:</label>
+    <input type="text" id="event-location" name="event_location" value="{{ eventEdit.venue }}" required>
+
+    <button type="submit">Save</button>
+</form>
+
+{% endblock %}

@@ -91,7 +91,7 @@
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://images.unsplash.com/photo-1468359601543-843bfaef291a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1474&q=80");
             background-size: auto;
             background-position: center;
-            background-repeat: right;
+            background-repeat: repeat;
             padding-bottom: 400px;
 
         }
@@ -374,8 +374,8 @@
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/event_list/">Events</a></li>
-                <li><a href="#">Seminars</a></li>
-                <li><a href="#">Hackathons</a></li>
+                <li><a href="/events/?category=Seminar">Seminars</a></li>
+                <li><a href="/events/?category=Hackathon">Hackathons</a></li>
                 {% if isLoggedIn %}
                 <li><a href="/logout/">Logout</a></li>
                 {% else %}

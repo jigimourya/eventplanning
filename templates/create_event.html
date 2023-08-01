@@ -55,7 +55,8 @@
     <div class="box">
         <p class="work-heading"></p>
         <h1>Create Event</h1>
-        <form action="{% url 'create_event' %}" method="POST">
+        
+        <form action="{% url 'create_event' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <!-- Add event details fields -->

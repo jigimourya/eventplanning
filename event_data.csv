@@ -1,0 +1,11 @@
+name_of_event,description,department,for_batch,venue,time,mode,event_date,event_type
+Festivals,Fest,SSBSR,first year,block45,12:00:00,offline,21-07-2023,Fest
+Hackathon,Hackathon,SSAHS,second year,online,12:00:00,online,,Hackathon
+Hackathon e,Hackathon,SSBSR,first year,onlinee,12:00:00,online,,Competition
+Party,Party,SSET,first year,lawn,01:00:00,offline,,Party
+Seminar,Seminar,SSET,first year,a.p.j. abdul kalam auditorium,12:00:00,offline,,Seminar
+Seminar,abc,SSET,first year,online,12:00:00,online,,Webinar
+Seminar,Seminar,SSET,fifth year,block45,12:00:00,offline,,Seminar
+Workshop,Workshop,SSMFE,first year,sww,12:00:00,online,,Workshop
+comp,comp,SSBSR,first year,a.p.j. abdul kalam auditorium,12:00:00,online,,Competition
+Workshop2,Workshop2,SSBSR,third year,block 4,15:00:00,online,,Workshop

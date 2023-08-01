@@ -22,8 +22,23 @@ from django.contrib.auth.views import LoginView
 from .views import logout_view
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib import admin
+
+
+'''
+if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL,
+                              document_root=settings.MEDIA_ROOT)
+'''
+
+
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
+]
+
+
+urlpatterns += [
     path('catalog/', views.homepage, name='home'),
     path('homepage/', views.homepage, name='homepage'),
     path('register/', views.register, name='register'),
@@ -33,7 +48,12 @@ urlpatterns = [
     path('event_list/', views.event_list, name='event_list'),
     path('event_details/', views.event_details, name='event_details'),
     path('event_delete/', views.event_delete, name='event_delete'),
+    path('event_edit/',views.event_edit,name='event_edit'),
+    path('event_save/',views.event_save,name='event_save'),
+    #path('hackathon/',views.hackathon,name='hackathon'),
+    path('events/',views.category_events,name='category_events'),
+    #path('seminar/',views.seminar,name='seminar'),
     path('logout/', logout_view, name='logout'),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL,
+                              document_root=settings.MEDIA_ROOT)
 

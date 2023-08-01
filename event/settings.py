@@ -178,3 +178,9 @@ MODE = [
 ]
 
 STATICFILES_FINDERS = [    'django.contrib.staticfiles.finders.FileSystemFinder',    'django.contrib.staticfiles.finders.AppDirectoriesFinder',]
+
+DATE_INPUT_FORMATS = ['%Y-%m-%d']
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
